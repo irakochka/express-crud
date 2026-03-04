@@ -1,9 +1,9 @@
 import {Router} from "express";
-import {HttpStatus} from "../core/types/http-statuses";
-import {db} from "../db/in-memories.db";
-import {videoInputDtoValidation} from "../drivers/validation/videoInputDtoValidation";
-import {createErrorMessages} from "../core/utils/error.utils";
-import {Video} from "../drivers/types/video";
+import {HttpStatus} from "../../core/types/http-statuses";
+import {db} from "../../db/in-memories.db";
+import {createErrorMessages} from "../../core/utils/error.utils";
+import {videoInputDtoValidation} from "../validation/videoInputDtoValidation";
+import {Video} from "../types/video";
 
 export const videosRouter = Router({});
 
