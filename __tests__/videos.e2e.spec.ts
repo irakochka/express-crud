@@ -46,7 +46,7 @@ describe('Video API', () => {
 
         await request(app)
             .post('/api/videos')
-            .send(newVideo)
+            .send(newVideo2)
             .expect(HttpStatus.Created);
 
         const videosListResponse = await request(app)
