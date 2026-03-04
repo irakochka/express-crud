@@ -1,4 +1,4 @@
-import {Video, VideoResolution} from "../drivers/types/video";
+import {Video, VideoResolution} from "../videos/types/video";
 
 export const db = {
     videos: <Video[]> [
