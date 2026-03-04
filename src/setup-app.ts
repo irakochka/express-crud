@@ -45,7 +45,16 @@ export const setupApp = (app: Express) => {
 
         db.videos.push(newVideo);
         res.status(HttpStatus.Created).send(newVideo);
-    })
+    });
+
+    app.get("/testing", (req, res) => {
+        res.status(200).send("testing url");
+    });
+
+    app.delete('/testing/all-data', (req, res) => {
+        db.videos = [];
+        res.sendStatus(HttpStatus.NoContent);
+    });
 
     return app;
 };
