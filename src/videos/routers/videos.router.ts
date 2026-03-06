@@ -14,7 +14,7 @@ videosRouter
     .get('/:id', (req, res) => {
         const video = db.videos.find(v => v.id === +req.params.id);
         if (!video) {
-            return res.status(404).send({message: 'Video not found'});
+            return res.status(HttpStatus.NotFound).send({message: 'Video not found'});
         }
 
         res.status(HttpStatus.Ok).send(video);
@@ -39,4 +39,32 @@ videosRouter
 
         db.videos.push(newVideo);
         res.status(HttpStatus.Created).send(newVideo);
+    })
+    .put('/:id', (req, res) => {
+        const video = db.videos.find(v => v.id === +req.params.id);
+        if (!video) {
+            return res.status(HttpStatus.NotFound).send({message: 'Video not found'});
+        }
+
+        const updatedVideo = {
+            ...video,
+            title: req.body.title,
+            author: req.body.author,
+            availableResolutions: req.body.availableResolutions,
+            canBeDownloaded: req.body.canBeDownloaded,
+            minAgeRestriction: req.body.minAgeRestriction,
+            publicationDate: req.body.publicationDate,
+        }
+
+        db.videos = db.videos.map(v => v.id === video.id ? updatedVideo : v);
+        res.sendStatus(HttpStatus.NoContent);
+    })
+    .delete('/:id', (req, res) => {
+        const video = db.videos.find(v => v.id === +req.params.id);
+        if (!video) {
+            return res.status(HttpStatus.NotFound).send({message: 'Video not found'});
+        }
+
+        db.videos = db.videos.filter(v => v.id !== video.id);
+        res.sendStatus(HttpStatus.NoContent);
     })

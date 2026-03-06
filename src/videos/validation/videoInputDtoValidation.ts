@@ -1,8 +1,8 @@
-import {VideoInputDto} from "../dto/video.input-dto";
+import {CreateVideoInputDto} from "../dto/create-video-input.dto";
 import {ValidationError} from "../types/validationError";
 import {VideoResolution} from "../types/video";
 
-export const videoInputDtoValidation = (data: VideoInputDto): ValidationError[] => {
+export const videoInputDtoValidation = (data: CreateVideoInputDto): ValidationError[] => {
     const errors: ValidationError[] = [];
 
     if (!data.title || typeof data.title !== 'string' || data.title.trim().length < 2 || data.title.trim().length > 40) {

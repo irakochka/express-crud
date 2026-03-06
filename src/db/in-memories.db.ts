@@ -4,7 +4,7 @@ export const db = {
     videos: <Video[]> [
         {
             id: 1,
-            title: 'NestJS Crash Course: Modules, Controllers, Providers',
+            title: 'NestJS Crash Course',
             author: 'IT-Incubator',
             canBeDownloaded: false,
             minAgeRestriction: null,
@@ -19,7 +19,7 @@ export const db = {
         },
         {
             id: 2,
-            title: 'PostgreSQL Joins — Inner/Left/Right/Full',
+            title: 'PostgreSQL Joins',
             author: 'DB Lab',
             canBeDownloaded: true,
             minAgeRestriction: 12,
@@ -29,7 +29,7 @@ export const db = {
         },
         {
             id: 3,
-            title: 'Redis Basics: Keys, TTL, Pub/Sub',
+            title: 'Redis Basics',
             author: 'Backend Notes',
             canBeDownloaded: true,
             minAgeRestriction: 16,
@@ -39,7 +39,7 @@ export const db = {
         },
         {
             id: 4,
-            title: 'RabbitMQ: Exchanges, Queues, Routing Keys',
+            title: 'RabbitMQ',
             author: 'Message Bros',
             canBeDownloaded: false,
             minAgeRestriction: 18,
@@ -49,7 +49,7 @@ export const db = {
         },
         {
             id: 5,
-            title: 'Angular NgRx: Actions → Effects → Reducers',
+            title: 'Angular NgRx',
             author: 'Frontend Samurai',
             canBeDownloaded: true,
             minAgeRestriction: null,
