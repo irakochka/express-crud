@@ -2,8 +2,9 @@ import {Router} from "express";
 import {HttpStatus} from "../../core/types/http-statuses";
 import {db} from "../../db/in-memories.db";
 import {createErrorMessages} from "../../core/utils/error.utils";
-import {videoInputDtoValidation} from "../validation/videoInputDtoValidation";
+import {createVideoInputDtoValidation} from "../validation/createVideoInputDtoValidation";
 import {Video} from "../types/video";
+import {updateVideoInputDtoValidation} from "../validation/updateVideoInputDtoValidation";
 
 export const videosRouter = Router({});
 
@@ -20,7 +21,7 @@ videosRouter
         res.status(HttpStatus.Ok).send(video);
     })
     .post('', (req, res) => {
-        const errors = videoInputDtoValidation(req.body);
+        const errors = createVideoInputDtoValidation(req.body);
         if (errors.length > 0) {
             res.status(HttpStatus.BadRequest).send(createErrorMessages(errors));
             return;
@@ -44,6 +45,12 @@ videosRouter
         const video = db.videos.find(v => v.id === +req.params.id);
         if (!video) {
             return res.status(HttpStatus.NotFound).send({message: 'Video not found'});
+        }
+
+        const errors = updateVideoInputDtoValidation(req.body);
+        if (errors.length > 0) {
+            res.status(HttpStatus.BadRequest).send(createErrorMessages(errors));
+            return;
         }
 
         const updatedVideo = {
